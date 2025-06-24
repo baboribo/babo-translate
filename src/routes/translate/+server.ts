@@ -14,7 +14,7 @@ export async function POST({ request }) {
       "version": "1"
     },
     model: 'gpt-4o',
-    inputs: [
+    input: [
       {
         "role": "user",
         "content": `Translate the following text to ${targetLang}: "${text}"`
