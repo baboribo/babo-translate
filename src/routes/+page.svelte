@@ -1,5 +1,4 @@
 <script lang="ts">
-  let translation = '';
   let inputText = '';
   let targetLang = 'ko'; // 기본값 한국어
 
