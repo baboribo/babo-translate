@@ -24,7 +24,7 @@
 
 <div class="back-container">
   <h4>번역할 텍스트 입력</h4>
-  <input class="text-input" type="text" bind:value={inputText} placeholder="번역할 텍스트를 입력하세요" />
+  <textarea class="textarea-input" bind:value={inputText} placeholder="번역할 텍스트를 입력하세요"></textarea>
   <h4>목표 언어 선택</h4>
   <select bind:value={targetLang}>
     <option value="en">영어</option>
@@ -34,8 +34,8 @@
     <!-- 필요하면 더 추가 -->
   </select>
   <button on:click={translate}>번역하기</button>
-  <h4>결과</h4>
-  <p>{result}</p>
+  <h4>번역 결과</h4>
+  <p class="bigtext">{result}</p>
   {#if loading}
     <p>생각 중...</p>
   {/if}
@@ -50,13 +50,13 @@
     padding: 20px;
     font-family: Arial, sans-serif;
   }
-  .text-input {
+  .textarea-input {
     padding: 10px 18px;
     margin-bottom: 0px;
     margin-top: 10px;
     font-size: 16px;
     border: 1px solid #ccc;
-    border-radius: 30px;
+    border-radius: 22px;
   }
   button {
     padding: 10px 20px;
@@ -80,5 +80,11 @@
   h4 {
     margin-top: 20px;
     margin-bottom: 0px;
+  }
+  .bigtext {
+    font-size: 22px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    color: #333;
   }
 </style>

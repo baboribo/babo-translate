@@ -26,6 +26,6 @@ export async function POST({ request }) {
   });
 
   // 프롬프트에 따라 반환 구조가 다를 수 있으니, 적절히 수정 필요
-  const translation = response.output_text ?? '';
+  const translation = response.output_text.replace(/^\n+|\n+$/g, '') ?? '';
   return json({ translation });
 }
