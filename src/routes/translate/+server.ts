@@ -1,6 +1,6 @@
 import { json } from '@sveltejs/kit';
 import OpenAI from 'openai';
-import { OPENAI_API_KEY } from '$env/static/private';
+import { OPENAI_API_KEY, PROMPT_ID } from '$env/static/private';
 
 const openai = new OpenAI({ apiKey: OPENAI_API_KEY });
 
@@ -10,7 +10,7 @@ export async function POST({ request }) {
   // 프롬프트 ID와 입력값 사용
   const response = await openai.responses.create({
     prompt: {
-      "id": "pmpt_685b0954582c81969698968d13211ad508bec9396f98310e",
+      "id": `${PROMPT_ID}`,
       "version": "1"
     },
     model: 'gpt-4o',
