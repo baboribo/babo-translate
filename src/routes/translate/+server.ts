@@ -13,11 +13,11 @@ export async function POST({ request }) {
       "id": `${PROMPT_ID}`,
       "version": "1"
     },
-    model: 'gpt-4o',
+    model: 'o3-mini',
     input: [
       {
         "role": "user",
-        "content": `Translate the following text to ${targetLang}: "${text}"`
+        "content": `Translate the following text to ${targetLang}:/n ${text}`
       }
     ],
     reasoning: {},
