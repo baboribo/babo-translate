@@ -26,22 +26,52 @@
   <h4>번역할 텍스트 입력</h4>
   <textarea class="textarea-input" bind:value={inputText} placeholder="번역할 텍스트를 입력하세요"></textarea>
   <h4>목표 언어 선택</h4>
-  <select bind:value={targetLang}>
+  <select bind:value={targetLang}> <!-- 언어 선택 -->
     <option value="en">영어</option>
     <option value="ja">일본어</option>
     <option value="zh">중국어</option>
     <option value="ko">한국어</option>
-    <!-- 필요하면 더 추가 -->
+    <!-- <option value="de">독일어</option>
+    <option value="es">스페인어</option> -->
   </select>
   <button on:click={translate}>번역하기</button>
   <h4>번역 결과</h4>
-  <p class="bigtext">{result}</p>
+  <p class="bigtext" style="white-space: pre-line;">{result}</p>
   {#if loading}
-    <p>생각 중...</p>
+    <div style="display: flex; align-items: center; justify-content: center; flex-direction: column;">
+      <div class="loader"></div>
+      <h4>생각 중</h4>
+      <p style="color: #636369;">열심히 해석하고 있어요, 잠시만 기다려주세요.</p>
+    </div>
+  {:else if result}
+    <div>
+      <p style="color: #636369;">AI 번역은 정확하지 않을 수 있습니다.</p>
+    </div>
+  {:else}
+    <div>
+      <p class="bigtext" style="color: #00000070;">번역 결과가 여기에 표시됩니다.</p>
+    </div>
   {/if}
 </div>
 
 <style>
+  .loader {
+    border: 2px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 2px solid #000;
+    width: 24px;
+    height: 24px;
+    animation: spin 1s ease infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
   .back-container {
     display: flex;
     flex-direction: column;
@@ -56,7 +86,7 @@
     margin-top: 10px;
     font-size: 16px;
     border: 1px solid #ccc;
-    border-radius: 22px;
+    border-radius: 12px;
   }
   button {
     padding: 10px 20px;
@@ -64,18 +94,25 @@
     cursor: pointer;
     margin-top: 14px;
     border: 1px solid #ccc;
-    border-radius: 30px;
+    border-radius: 12px;
+    transition: ease 0.1s;
   }
   button:hover {
     background-color: #d8eafb;
   }
   select {
-    padding: 10px;
+    padding: 4px;
     padding-right: 18px;
     margin-top: 10px;
     font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 30px;
+    border: none;
+    border-radius: 12px;
+    background: none;
+    transition: ease 0.1s;
+  }
+  select:hover {
+    background-color: #00000010;
+    transition: ease 0.2s;
   }
   h4 {
     margin-top: 20px;
@@ -86,5 +123,6 @@
     margin-top: 10px;
     margin-bottom: 20px;
     color: #333;
+    transition: ease 0.4s;
   }
 </style>
